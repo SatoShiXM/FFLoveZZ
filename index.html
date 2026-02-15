@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <!-- 响应式核心：让页面宽度适配设备，初始缩放1:1 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我们的婚礼</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background-color: rgb(235, 235, 235);
+      min-height: 100vh;
+      padding-bottom: 20px;
+    }
+    .header {
+      background-color: rgb(255, 255, 255);
+      width: 100%;
+      height: 60px;
+      display: flex;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .left{
+      width: 50%;
+      height: 60px;
+      text-align: center;
+    }
+    .left a{
+      text-decoration: none;
+      color: rgb(0, 0, 0);
+      line-height: 60px;
+      border-bottom: 4px solid pink;
+      font-size: 18px;
+    }
+    .right{
+      width: 50%;
+      height: 60px;
+      text-align: center;
+    }
+    .right a{
+      text-decoration: none;
+      color: rgb(0, 0, 0);
+      line-height: 60px;
+      font-size: 18px;
+    }
+
+    .box {
+      width: 90%; /* 手机端放宽宽度，更适配 */
+      max-width: 1200px; /* 电脑端最大宽度限制 */
+      margin: 0 auto;
+      padding: 10px 0;
+    }
+
+    /* 基础视频容器样式 */
+    .video-1, .video-2, .video-3 {
+      background-color: rgb(255, 255, 255);
+      margin: 15px auto;
+      border-radius: 20px;
+      overflow: hidden;
+      padding: 20px;
+      /* 初始为Flex布局，后续用媒体查询调整方向 */
+      display: flex;
+      gap: 15px;
+      /* 高度自适应，不固定vh，避免手机端变形 */
+      min-height: 400px;
+    }
+
+    /* 电脑端样式（屏幕宽度≥768px）：横向排列 */
+    @media (min-width: 768px) {
+      .video-1, .video-2, .video-3 {
+        width: 80%;
+        height: 70vh;
+        max-height: 600px;
+      }
+      .video-1-left, .video-2-left, .video-3-left {
+        width: 30%;
+        font-size: 30px;
+      }
+      .video-1-right, .video-2-right, .video-3-right {
+        flex: 1;
+      }
+    }
+
+    /* 手机端样式（屏幕宽度<768px）：竖向排列 */
+    @media (max-width: 767px) {
+      .video-1, .video-2, .video-3 {
+        width: 100%;
+        /* 关键：Flex方向改为竖向 */
+        flex-direction: column;
+        min-height: 500px;
+      }
+      .video-1-left, .video-2-left, .video-3-left {
+        width: 100%;
+        height: 80px; /* 固定标题高度 */
+        font-size: 24px; /* 手机端字体稍小 */
+      }
+      .video-1-right, .video-2-right, .video-3-right {
+        width: 100%;
+        flex: 1;
+      }
+    }
+
+    /* 通用样式：标题居中 */
+    .video-1-left, .video-2-left, .video-3-left {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      color: #333;
+    }
+
+    /* 通用样式：视频容器 */
+    .video-1-right, .video-2-right, .video-3-right {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+    }
+    .video-1-right-content {
+      width: 100%;
+      height: 100%;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background-color: #000;
+    }
+
+    /* 底部响应式适配 */
+     .foot {
+      height: 180px;
+      width: 100%;
+      background-color: aliceblue;
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 0 10px;
+    }
+    .foot .row-1 {
+      font-size: 22px;
+      margin-bottom: 15px;
+      font-weight: bold;
+    }
+    .partner-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px; /* 手机端缩小间距 */
+    }
+    .partner-item img {
+      max-height: 35px; /* 手机端图片适配 */
+      width: auto;
+      image-rendering: -webkit-optimize-contrast;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="left">
+      <a href="./index.html">婚礼视频</a>
+    </div>
+    <div class="right">
+      <a href="./mjfat.html">明君影视</a>
+    </div>
+  </div>
+
+  <div class="box">
+    <div class="video-1">
+      <div class="video-1-left">
+        <p class="first">微电影</p>
+      </div>
+      <div class="video-1-right">
+        <div class="video-1-right-content">
+          <video controls>
+            <source src="https://2120511107-wedding.vod.cn-north-1.volcvideo.com/%E5%BE%AE%E7%94%B5%E5%BD%B1.mp4?preview=1&auth_key=1771155871-406d8a7bda-0-6cf17e087ac4411959a15a85d32dd995" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+
+    <div class="video-2">
+      <div class="video-2-left">
+        <p class="second">迎亲</p>
+      </div>
+      <div class="video-2-right">
+        <div class="video-1-right-content">
+          <video controls>
+            <source src="https://2120511107-wedding.vod.cn-north-1.volcvideo.com/%E8%BF%8E%E4%BA%B2.mp4?preview=1&auth_key=1771155896-a20436dee6-0-4c282fb1785f7afa4f98c1b719c4d8c9" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+
+    <div class="video-3">
+      <div class="video-3-left">
+        <p class="third">典礼</p>
+      </div>
+      <div class="video-3-right">
+        <div class="video-1-right-content">
+          <video controls>
+            <source src="https://2120511107-wedding.vod.cn-north-1.volcvideo.com/%E5%85%B8%E7%A4%BC.mp4?preview=1&auth_key=1771155967-057f8e661c-0-2aa41135285e3d9d2497c9caa8087c3e" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <p class="row-1">合作伙伴</p>
+    <div class="partner-container">
+      <div class="partner-item">
+        <img src="./images/mjfat.png" alt="明君影视">
+      </div>
+      <div class="partner-item">
+        <img src="./images/byte.png" alt="火山引擎">
+      </div>
+    </div>
+  </div>
+</body>
+</html>
