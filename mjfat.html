@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我们的婚礼</title>
+  <style>
+    * {
+      margin: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background-color: rgb(235, 235, 235);
+      min-height: 100vh;
+    }
+    .header {
+      background-color: rgb(255, 255, 255);
+      width: 100%;
+      height: 60px;
+      display: flex;
+    }
+    .left{
+      width: 50%;
+      height: 60px;
+      text-align: center;
+    }
+    .left a{
+      text-decoration: none;
+      color: rgb(0, 0, 0);
+      line-height: 60px;
+      
+    }
+    .right{
+      width: 50%;
+      height: 60px;
+      text-align: center;
+    }
+    .right a{
+      text-decoration: none;
+      color: rgb(0, 0, 0);
+      line-height: 60px;
+      border-bottom: 4px solid pink;
+    }
+
+    .box {
+      width: 80%;
+      margin: 0 auto;
+      padding: 10px 0;
+    }
+
+    /* 核心修复：去掉蓝色背景，优化Flex布局 */
+    .video-1 ,.video-2 ,.video-3 {
+      height: 70vh;
+      width: 80%;
+      background-color: rgb(255, 255, 255);
+      margin: 10px auto;
+      border-radius: 20px;
+      overflow: hidden;
+      display: flex;
+      gap: 15px;
+      padding: 25px;
+    }
+
+    .video-1-left ,.video-2-left ,.video-3-left{
+      height: 100%;
+      width: 30%;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .box .video-1 .video-1-left .first,
+    .box .video-2 .video-2-left .second,
+    .box .video-3 .video-3-left .third{
+      font-size: clamp(20px, 3vw, 30px);
+    }
+
+    /* 关键修复：删掉蓝色背景，让视频占满容器 */
+    .video-1-right ,.video-2-right ,.video-3-right{
+      height: 100%;
+      flex: 1;
+      /* 删掉原来的蓝色背景：background-color: blue; */
+      /* 新增：让视频容器内部也用Flex居中 */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+    }
+
+    /* 视频容器样式优化 */
+    .video-1-right-content {
+      width: 100%;
+      height: 100%;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    /* 视频样式：占满父容器，适配高度 */
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain; /* 保持视频比例，不拉伸变形 */
+    }
+
+  .foot {
+  height: 200px;
+  width: 100%;
+  background-color: aliceblue;
+  margin-top: 10px;
+  /* 关键：让整个底部用 Flex 垂直排列 */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: auto;
+}
+
+.foot .row-1 {
+  color: rgb(0, 0, 0);
+  font-size: 25px;
+  margin-bottom: 20px; /* 和下面的合作伙伴拉开间距 */
+}
+
+.partner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px; /* 两个合作伙伴之间的间距 */
+}
+
+.partner-item {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* 图标和文字之间的间距 */
+  white-space: nowrap; /* 防止文字换行 */
+}
+
+.partner-item img {
+  max-height: 40px;
+  width: auto;
+}
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="left">
+      <a href="./index.html">婚礼视频</a>
+    </div>
+    <div class="right">
+      <a href="./mjfat.html">明君影视</a>
+    </div>
+  </div>
+
+  <div class="box">
+    <div class="video-1">
+      <div class="video-1-left">
+        <p class="first">婚纱照MV</p>
+      </div>
+      <div class="video-1-right">
+        <div class="video-1-right-content">
+          <!-- 视频地址保留你填的，样式已优化 -->
+          <video controls>
+            <source src="https://2120511107-wedding.vod.cn-north-1.volcvideo.com/%E8%A7%86%E9%A2%91.mp4?preview=1&auth_key=1771144811-56866fde63-0-7abe150da4b112edefd714a02cbf81e6" type="video/mp4">
+            你的浏览器不支持视频播放，请更换浏览器重试。
+          </video>
+        </div>
+      </div>
+    </div>
+
+    <div class="video-2">
+      <div class="video-2-left">
+        <p class="second">倒计时</p>
+      </div>
+      <div class="video-2-right">
+        <!-- 迎亲视频：替换成你的迎亲视频地址 -->
+        <div class="video-1-right-content">
+          <video controls>
+            <source src="https://2120511107-wedding.vod.cn-north-1.volcvideo.com/%E5%80%92%E8%AE%A1%E6%97%B6.mp4?preview=1&auth_key=1771144849-daead8f898-0-fbf94ac402965b38a144c63485616841" type="video/mp4">
+            你的浏览器不支持视频播放，请更换浏览器重试。
+          </video>
+        </div>
+      </div>
+    </div>
+
+    <div class="video-3">
+      <div class="video-3-left">
+        <p class="third">大娘找对象</p>
+      </div>
+      <div class="video-3-right">
+        <!-- 典礼视频：替换成你的典礼视频地址 -->
+        <div class="video-1-right-content">
+          <video controls>
+            <source src="https://2120511107-wedding.vod.cn-north-1.volcvideo.com/%E5%A4%A7%E5%A8%98%E6%89%BE%E5%AF%B9%E8%B1%A1.mp4?preview=1&auth_key=1771144871-1704721cc6-0-bedd6489935dbe33d961965c5731d54a" type="video/mp4">
+            你的浏览器不支持视频播放，请更换浏览器重试。
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot">
+  <p class="row-1">合作伙伴</p>
+  <div class="partner-container">
+    <div class="partner-item">
+      <img src="./images/mjfat.png" alt="明君影视">
+      <!-- <span>明君影视</span> -->
+    </div>
+    <div class="partner-item">
+      <img src="./images/byte.png" alt="火山引擎">
+      <!-- <span>火山引擎</span> -->
+    </div>
+  </div>
+</div>
+</body>
+</html>
